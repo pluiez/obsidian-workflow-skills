@@ -17,29 +17,30 @@ Design principles:
 ```
 obsidian-workflow-skills/
 ├── workflow.md                     # Workflow design doc & interaction examples
-├── daily-workflow/                 # Skill: daily workflow
-│   ├── SKILL.md                    #   Skill definition
-│   ├── scripts/
-│   │   └── daily.py                #   Workspace initialization script
-│   ├── templates/                  #   Daily note templates
-│   │   ├── daily-tasks.md
-│   │   ├── daily-knowledge.md
-│   │   └── daily-ideas.md
-│   └── references/
-│       └── format.md               #   Daily note format spec
-├── daily-review/                   # Skill: daily review
-│   ├── SKILL.md                    #   Skill definition
-│   ├── scripts/
-│   │   └── archive.py              #   Archive script
-│   └── references/
-│       └── format.md               #   Review & tagging format spec
-└── write-article/                  # Skill: knowledge distillation (articles)
-    ├── SKILL.md                    #   Skill definition
-    ├── scripts/
-    │   └── scan_archive.py         #   Archive scanner script
-    └── references/
-        ├── format.md               #   Article format spec
-        └── example-article.md      #   Example article
+└── skills/
+    ├── daily-workflow/             # Skill: daily workflow
+    │   ├── SKILL.md                #   Skill definition
+    │   ├── scripts/
+    │   │   └── daily.py            #   Workspace initialization script
+    │   ├── templates/              #   Daily note templates
+    │   │   ├── daily-tasks.md
+    │   │   ├── daily-knowledge.md
+    │   │   └── daily-ideas.md
+    │   └── references/
+    │       └── format.md           #   Daily note format spec
+    ├── daily-review/               # Skill: daily review
+    │   ├── SKILL.md                #   Skill definition
+    │   ├── scripts/
+    │   │   └── archive.py          #   Archive script
+    │   └── references/
+    │       └── format.md           #   Review & tagging format spec
+    └── write-article/              # Skill: knowledge distillation (articles)
+        ├── SKILL.md                #   Skill definition
+        ├── scripts/
+        │   └── scan_archive.py     #   Archive scanner script
+        └── references/
+            ├── format.md           #   Article format spec
+            └── example-article.md  #   Example article
 ```
 
 ## 2. Skills
@@ -100,7 +101,7 @@ pip install loguru
 
 ### 4.2 As Agent Skills
 
-Register the skill directories (`daily-workflow/`, `daily-review/`, `write-article/`) with an AI agent that supports the SKILL.md convention (e.g. Cursor, Codex). The agent will automatically trigger the appropriate skill based on user intent and follow the workflow defined in each SKILL.md.
+Register the skill directories (`skills/daily-workflow/`, `skills/daily-review/`, `skills/write-article/`) with an AI agent that supports the SKILL.md convention (e.g. Cursor, Codex). The agent will automatically trigger the appropriate skill based on user intent and follow the workflow defined in each SKILL.md.
 
 ### 4.3 Running Scripts Standalone
 
@@ -108,13 +109,13 @@ Each skill's Python script can also be run independently:
 
 ```bash
 # Initialize today's workspace
-python daily-workflow/scripts/daily.py /path/to/vault
+python skills/daily-workflow/scripts/daily.py /path/to/vault
 
 # Archive (after review is complete)
-python daily-review/scripts/archive.py /path/to/vault
+python skills/daily-review/scripts/archive.py /path/to/vault
 
 # Scan archive (list archived dates)
-python write-article/scripts/scan_archive.py /path/to/vault [--days N]
+python skills/write-article/scripts/scan_archive.py /path/to/vault [--days N]
 ```
 
 ### 4.4 Obsidian Plugin Dependency

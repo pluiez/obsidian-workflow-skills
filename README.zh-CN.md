@@ -17,29 +17,30 @@
 ```
 obsidian-workflow-skills/
 ├── workflow.md                     # 工作流设计文档与交互模拟
-├── daily-workflow/                 # 技能：每日工作流
-│   ├── SKILL.md                    #   技能定义
-│   ├── scripts/
-│   │   └── daily.py                #   工作区初始化脚本
-│   ├── templates/                  #   每日笔记模板
-│   │   ├── daily-tasks.md
-│   │   ├── daily-knowledge.md
-│   │   └── daily-ideas.md
-│   └── references/
-│       └── format.md               #   每日笔记格式规范
-├── daily-review/                   # 技能：每日回顾
-│   ├── SKILL.md                    #   技能定义
-│   ├── scripts/
-│   │   └── archive.py              #   归档脚本
-│   └── references/
-│       └── format.md               #   回顾与标签格式规范
-└── write-article/                  # 技能：知识沉淀（写文章）
-    ├── SKILL.md                    #   技能定义
-    ├── scripts/
-    │   └── scan_archive.py         #   存档扫描脚本
-    └── references/
-        ├── format.md               #   文章格式规范
-        └── example-article.md      #   文章示例
+└── skills/
+    ├── daily-workflow/             # 技能：每日工作流
+    │   ├── SKILL.md                #   技能定义
+    │   ├── scripts/
+    │   │   └── daily.py            #   工作区初始化脚本
+    │   ├── templates/              #   每日笔记模板
+    │   │   ├── daily-tasks.md
+    │   │   ├── daily-knowledge.md
+    │   │   └── daily-ideas.md
+    │   └── references/
+    │       └── format.md           #   每日笔记格式规范
+    ├── daily-review/               # 技能：每日回顾
+    │   ├── SKILL.md                #   技能定义
+    │   ├── scripts/
+    │   │   └── archive.py          #   归档脚本
+    │   └── references/
+    │       └── format.md           #   回顾与标签格式规范
+    └── write-article/              # 技能：知识沉淀（写文章）
+        ├── SKILL.md                #   技能定义
+        ├── scripts/
+        │   └── scan_archive.py     #   存档扫描脚本
+        └── references/
+            ├── format.md           #   文章格式规范
+            └── example-article.md  #   文章示例
 ```
 
 ## 2. 三个技能
@@ -106,7 +107,7 @@ pip install loguru
 
 ### 4.2 作为 Agent 技能使用
 
-将本仓库中的技能目录（`daily-workflow/`、`daily-review/`、`write-article/`）注册到支持 SKILL.md 规范的 AI Agent（如 Cursor、Codex）中。Agent 会根据用户意图自动触发对应技能，按 SKILL.md 中定义的流程与用户交互。
+将本仓库中的技能目录（`skills/daily-workflow/`、`skills/daily-review/`、`skills/write-article/`）注册到支持 SKILL.md 规范的 AI Agent（如 Cursor、Codex）中。Agent 会根据用户意图自动触发对应技能，按 SKILL.md 中定义的流程与用户交互。
 
 ### 4.3 单独运行脚本
 
@@ -114,13 +115,13 @@ pip install loguru
 
 ```bash
 # 初始化今日工作区
-python daily-workflow/scripts/daily.py /path/to/vault
+python skills/daily-workflow/scripts/daily.py /path/to/vault
 
 # 归档（回顾完成后）
-python daily-review/scripts/archive.py /path/to/vault
+python skills/daily-review/scripts/archive.py /path/to/vault
 
 # 扫描存档（查看有哪些天已归档）
-python write-article/scripts/scan_archive.py /path/to/vault [--days N]
+python skills/write-article/scripts/scan_archive.py /path/to/vault [--days N]
 ```
 
 ### 4.4 Obsidian 插件依赖
